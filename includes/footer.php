@@ -1,9 +1,13 @@
-    <footer style="text-align: center; padding: 1em; background: #eee;">
+    <footer>
         <div class="social-links">
-            <a href="https://facebook.com" target="_blank"><img src="/assets/icons/facebook.png" alt="Facebook"></a>
-            <a href="https://twitter.com" target="_blank"><img src="/assets/icons/twitter.png" alt="Twitter"></a>
-            <a href="https://instagram.com" target="_blank"><img src="/assets/icons/instagram.png" alt="Instagram"></a>
-            <a href="https://youtube.com" target="_blank"><img src="/assets/icons/youtube.png" alt="YouTube"></a>
+            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="/pages/privacy.php">Privacy Policy</a>
+            <a href="/pages/cookies.php">Cookie Information</a>
         </div>
     </footer>
 
@@ -11,7 +15,6 @@
         <span>This site uses cookies. <a href="#">Learn more</a></span>
         <button onclick="acceptCookies()">Accept</button>
     </div>
-    <a href="pages/privacy.php">Privacy Policy</a> | <a href="/pages/cookies.php">Cookie Information</a>
 
     </body>
 

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($lockout && $now < $lockout->modify('+5 minutes')) {
                 $error = 'Account locked due to too many failed attempts. Please try again later.';
-            } elseif (password_verify($password, $hash)) {
+            } elseif (password_verify($password, (string)$hash)) {
                 // Successful login
                 $stmt->close();
                 $stmt = $conn->prepare("UPDATE users SET failed_attempts = 0, lockout_time = NULL WHERE id = ?");
@@ -68,30 +68,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include '../includes/header.php'; ?>
 
-<link rel="stylesheet" href="/assets/css/style.css">
+<section style="max-width: 380px; margin: 2em auto; padding: 1.5em; text-align: center;">
+  <h2 style="font-size: 2em; margin-bottom: 0.5em; background: linear-gradient(135deg, #ff7043, #facc15); -webkit-background-clip: text; background-clip: text; color: transparent;"><i class="fa-solid fa-right-to-bracket"></i> Welcome Back</h2>
 
-<section style="max-width: 400px; margin: auto; padding: 2em;">
-  <h2>Login</h2>
-
-  <form method="post" action="login.php">
-    <label>Email:<br>
-      <input type="email" name="email" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
-    </label><br><br>
-
-    <label>Password:<br>
-      <input type="password" name="password" required>
+  <form method="post" action="login.php" style="text-align: left;">
+    <label>Email:
+      <input type="email" name="email" placeholder="john@example.com" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
     </label>
-    <?php if ($error): ?>
-      <p id="error-msg" style="color: red; font-size: 0.85em; margin-top: 4px; margin-bottom: 15px;"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
-    <br>
 
-    <button type="submit">Login</button>
+    <label style="margin-top: 0.5em;">Password:
+      <input type="password" name="password" placeholder="••••••••" required>
+    </label>
+    
+    <?php if ($error): ?>
+      <p id="error-msg" style="color: #ef4444; font-size: 0.9em; margin-top: 0.5em; display: flex; align-items: center; gap: 0.5em;"><i class="fa-solid fa-circle-exclamation"></i> <?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
+
+    <button type="submit" style="margin-top: 1.5em; width: 100%;"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</button>
   </form>
 
   <?php if ($success): ?>
-    <p style="color: green; font-weight: bold; margin-top: 20px;"><?= htmlspecialchars($success) ?></p>
+    <p style="color: #10b981; font-weight: 600; margin-top: 1.5em; display: flex; align-items: center; justify-content: center; gap: 0.5em;"><i class="fa-solid fa-circle-check"></i> <?= htmlspecialchars($success) ?></p>
   <?php endif; ?>
+  
+  <p style="margin-top: 2em; font-size: 0.9em; color: var(--text-muted);">Don't have an account? <a href="register.php" style="color: var(--primary); text-decoration: none; font-weight: bold;">Register here</a></p>
 </section>
 
 <script>

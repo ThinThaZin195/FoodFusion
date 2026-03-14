@@ -43,29 +43,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include '../includes/header.php'; ?>
 
-<link rel="stylesheet" href="/assets/css/style.css">
+<section style="max-width: 380px; margin: 2em auto; padding: 1.5em; text-align: center;">
+  <h2 style="font-size: 2em; margin-bottom: 0.5em; background: linear-gradient(135deg, #ff7043, #facc15); -webkit-background-clip: text; background-clip: text; color: transparent;"><i class="fa-solid fa-user-plus"></i> Create Account</h2>
+  
+  <form method="post" action="register.php" style="text-align: left;">
+    <div style="display: flex; gap: 1em; flex-wrap: wrap;">
+        <label style="flex: 1; min-width: 120px;">First Name:
+          <input type="text" name="first_name" placeholder="John" required>
+        </label>
 
-<section style="max-width: 400px; margin: auto; padding: 2em;">
-  <h2>Register</h2>
-  <form method="post" action="register.php">
-    <label>First Name:<br>
-      <input type="text" name="first_name" required>
-    </label><br><br>
+        <label style="flex: 1; min-width: 120px;">Last Name:
+          <input type="text" name="last_name" placeholder="Doe" required>
+        </label>
+    </div>
 
-    <label>Last Name:<br>
-      <input type="text" name="last_name" required>
-    </label><br><br>
+    <label style="margin-top: 0.5em;">Email:
+      <input type="email" name="email" placeholder="john@example.com" required>
+    </label>
 
-    <label>Email:<br>
-      <input type="email" name="email" required>
-    </label><br><br>
+    <label style="margin-top: 0.5em;">Password:
+      <input type="password" name="password" placeholder="••••••••" required>
+    </label>
 
-    <label>Password:<br>
-      <input type="password" name="password" required>
-    </label><br><br>
-
-    <button type="submit">Register</button>
+    <button type="submit" style="margin-top: 1.5em; width: 100%;"><i class="fa-solid fa-bolt"></i> Register</button>
   </form>
+  
+  <p style="margin-top: 2em; font-size: 0.9em; color: var(--text-muted);">Already have an account? <a href="login.php" style="color: var(--primary); text-decoration: none; font-weight: bold;">Login here</a></p>
 </section>
 
 <?php include '../includes/footer.php'; ?>
